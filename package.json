@@ -1,0 +1,13 @@
+{
+  "name": "rugradar",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:ext": "pnpm --filter @rugradar/ext dev",
+    "dev:web": "pnpm --filter @rugradar/web dev",
+    "build:ext": "pnpm --filter @rugradar/ext build",
+    "build:web": "pnpm --filter @rugradar/web build",
+    "test": "pnpm --filter @rugradar/core test",
+    "typecheck": "pnpm -r exec tsc --noEmit"
+  }
+}
