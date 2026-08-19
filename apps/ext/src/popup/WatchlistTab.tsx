@@ -17,7 +17,7 @@ export function WatchlistTab() {
   };
 
   if (items.length === 0) {
-    return <p className="text-xs text-slate-400">Belum ada watchlist. Tambah dari panel di pump.fun.</p>;
+    return <p className="text-xs text-slate-400">Watchlist is empty. Add tokens from the pump.fun panel.</p>;
   }
 
   return (
@@ -32,7 +32,7 @@ export function WatchlistTab() {
             onClick={() => remove(i.mint)}
             className="rounded bg-red-900/50 px-2 py-1 text-[10px] text-red-300"
           >
-            Hapus
+            Remove
           </button>
         </li>
       ))}

@@ -136,7 +136,7 @@ function Panel({ mint }: { mint: string }) {
           paddingTop: 8,
         }}
       >
-        {trades.length === 0 && <div style={{ color: "#64748b" }}>Menunggu trade…</div>}
+        {trades.length === 0 && <div style={{ color: "#64748b" }}>Waiting for trades…</div>}
         {trades.map((t, i) => (
           <TradeRow key={i} t={t} isDev={!!creator && t.trader === creator} />
         ))}

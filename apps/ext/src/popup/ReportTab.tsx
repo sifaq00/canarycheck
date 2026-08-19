@@ -12,7 +12,7 @@ export function ReportTab() {
   }, []);
 
   if (reports.length === 0) {
-    return <p className="text-xs text-slate-400">Belum ada AI report. Generate dari panel pump.fun.</p>;
+    return <p className="text-xs text-slate-400">No AI reports yet. Generate one from the pump.fun panel.</p>;
   }
 
   return (

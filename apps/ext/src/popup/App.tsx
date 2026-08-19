@@ -55,7 +55,7 @@ function ScoreTab() {
     setErr("");
     chrome.runtime.sendMessage({ type: "getScore", mint: mint.trim() }, (r) => {
       if (r?.score) setScore(r.score);
-      else setErr("Token tidak ditemukan / API error.");
+      else setErr("Token not found / API error.");
     });
   };
 
@@ -65,14 +65,14 @@ function ScoreTab() {
         <input
           value={mint}
           onChange={(e) => setMint(e.target.value)}
-          placeholder="Paste CA token…"
+          placeholder="Paste token CA…"
           className="flex-1 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100"
         />
         <button
           onClick={lookup}
           className="rounded bg-slate-700 px-3 py-1 text-xs font-medium text-white"
         >
-          Cek
+          Check
         </button>
       </div>
       {err && <p className="text-xs text-red-400">{err}</p>}

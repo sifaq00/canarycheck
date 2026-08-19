@@ -15,7 +15,7 @@ function Inner() {
     return (
       <div className="space-y-2">
         <p className="text-xs text-slate-300">
-          Terhubung:{" "}
+          Connected:{" "}
           <span className="font-mono text-slate-100">
             {publicKey.toBase58().slice(0, 8)}…
           </span>
@@ -38,21 +38,21 @@ function Inner() {
   return (
     <div className="space-y-2">
       <p className="text-xs text-slate-400">
-        Hubungkan wallet untuk badge holder & fitur premium nanti.
+        Connect a wallet for the holder badge & upcoming premium features.
       </p>
       <button
         onClick={() => connectWallet("Phantom")}
         disabled={connecting}
         className="block w-full rounded bg-slate-700 px-3 py-2 text-xs text-white disabled:opacity-50"
       >
-        {connecting ? "Menghubungkan…" : "Phantom"}
+        {connecting ? "Connecting…" : "Phantom"}
       </button>
       <button
         onClick={() => connectWallet("Solflare")}
         disabled={connecting}
         className="block w-full rounded bg-slate-700 px-3 py-2 text-xs text-white disabled:opacity-50"
       >
-        {connecting ? "Menghubungkan…" : "Solflare"}
+        {connecting ? "Connecting…" : "Solflare"}
       </button>
     </div>
   );
