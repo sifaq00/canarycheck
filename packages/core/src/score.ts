@@ -1,6 +1,8 @@
 import { FACTORS } from "./factors";
 import type { Score, TokenData } from "./types";
 
+export type { Score, TokenData } from "./types";
+
 const WSUM_BLEND = 0.3;
 const PEAK_BLEND = 0.7;
 
