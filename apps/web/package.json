@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "zip:ext": "powershell -NoProfile -Command \"New-Item -ItemType Directory -Force public | Out-Null; if (Test-Path public/rugradar-ext.zip) { Remove-Item public/rugradar-ext.zip }; Compress-Archive -Path ../ext/dist/* -DestinationPath public/rugradar-ext.zip\""
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.118.0",
