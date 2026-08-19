@@ -13,7 +13,8 @@ export function scoreToken(input: TokenData): Score {
     explain: f.explain(input),
   }));
   const wsum = factors.reduce((a, f) => a + f.raw * f.weight, 0);
-  const peak = Math.max(0, ...factors.map((f) => f.raw));
+  const peakCandidates = factors.filter((f) => f.id !== "age").map((f) => f.raw);
+  const peak = Math.max(0, ...peakCandidates);
   const total = Math.round(WSUM_BLEND * wsum + PEAK_BLEND * peak);
   return { total: Math.max(0, Math.min(100, total)), factors };
 }

@@ -39,6 +39,11 @@ describe("scoreToken", () => {
     expect(Math.abs(sum - 1)).toBeLessThan(1e-9);
   });
 
+  it("new but otherwise clean token stays low risk (age alone never yellows)", () => {
+    const s = scoreToken({ ...base, ageSec: 60 });
+    expect(s.total).toBeLessThan(40);
+  });
+
   it("new token with bad deployment gets higher score than old clean token", () => {
     const dirty = scoreToken({
       ...base,
