@@ -151,7 +151,7 @@ function Panel({ mint }: { mint: string }) {
           padding: "8px",
           borderRadius: 8,
           border: 0,
-          background: report.loading ? "#334155" : "#7c3aed",
+          background: report.loading ? "#334155" : "linear-gradient(135deg, #06b6d4, #3b82f6)",
           color: "#fff",
           fontWeight: 700,
           cursor: "pointer",

@@ -58,7 +58,7 @@ export default function How() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-950/80 via-slate-950 to-cyan-950/60 p-10 text-center sm:p-16"
+          className="mt-20 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-blue-950/80 via-slate-950 to-cyan-950/60 p-10 text-center sm:p-16"
         >
           <h3 className="font-display text-3xl font-bold text-white sm:text-4xl">
             Stop trusting vibes.
@@ -71,7 +71,7 @@ export default function How() {
           </p>
           <a
             href="/api/download"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.03]"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.03]"
           >
             Install the extension →
           </a>

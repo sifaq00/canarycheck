@@ -1,10 +1,18 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+
+const SCRAMBLE = "!<>-_\\/[]{}—=+*^?#________";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const [mx, setMx] = useState(50);
+  const [my, setMy] = useState(50);
+  const [scramble, setScramble] = useState(false);
+  const [display, setDisplay] = useState("ape in.");
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -12,12 +20,59 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      setMx(((e.clientX - r.left) / r.width) * 100);
+      setMy(((e.clientY - r.top) / r.height) * 100);
+    };
+    el.addEventListener("mousemove", onMove);
+    return () => el.removeEventListener("mousemove", onMove);
+  }, []);
+
+  useEffect(() => {
+    if (!scramble) return;
+    let frame = 0;
+    let raf: number;
+    const target = "ape in.";
+    const chars = target.split("");
+    const tick = () => {
+      frame++;
+      setDisplay(
+        chars
+          .map((c, i) => {
+            if (c === " ") return " ";
+            if (frame > i * 2 + 12) return c;
+            return SCRAMBLE[Math.floor(Math.random() * SCRAMBLE.length)];
+          })
+          .join("")
+      );
+      if (frame < 12 + chars.length * 2) raf = requestAnimationFrame(tick);
+      else setDisplay(target);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [scramble]);
+
   return (
-    <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      ref={heroRef}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      onMouseEnter={() => setScramble(true)}
+      onMouseLeave={() => setScramble(false)}
+    >
       <div className="bg-grid absolute inset-0" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60 transition-opacity"
+        style={{
+          background: `radial-gradient(600px circle at ${mx}% ${my}%, rgba(6,182,212,0.1), transparent 45%)`,
+        }}
+      />
       <div className="aurora h-[420px] w-[420px] bg-cyan-500/30 top-[-80px] left-[10%]" style={{ animationDelay: "0s" }} />
-      <div className="aurora h-[380px] w-[380px] bg-indigo-600/30 top-[10%] right-[8%]" style={{ animationDelay: "-7s" }} />
-      <div className="aurora h-[320px] w-[320px] bg-fuchsia-600/20 bottom-[-60px] left-[35%]" style={{ animationDelay: "-14s" }} />
+      <div className="aurora h-[380px] w-[380px] bg-blue-500/25 top-[10%] right-[8%]" style={{ animationDelay: "-7s" }} />
+      <div className="aurora h-[320px] w-[320px] bg-emerald-500/20 bottom-[-60px] left-[35%]" style={{ animationDelay: "-14s" }} />
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <motion.div
@@ -41,7 +96,7 @@ export default function Hero() {
         >
           See the <span className="grad-text">risk</span> before
           <br />
-          you ape in.
+          you {display}
         </motion.h1>
 
         <motion.p
@@ -62,7 +117,7 @@ export default function Hero() {
         >
           <a
             href="/api/download"
-            className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.03]"
+            className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.03]"
           >
             Install the extension
             <span className="transition-transform group-hover:translate-x-1">→</span>

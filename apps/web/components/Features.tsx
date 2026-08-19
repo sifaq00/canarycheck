@@ -3,12 +3,45 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 
+function TiltCard({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-2px)`;
+    el.style.setProperty("--mx", `${((x + 0.5) * 100).toFixed(1)}%`);
+    el.style.setProperty("--my", `${((y + 0.5) * 100).toFixed(1)}%`);
+  };
+
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = "";
+  };
+
+  return (
+    <div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} className={className}>
+      {children}
+    </div>
+  );
+}
+
 const FEATURES = [
   {
     title: "Risk score, on-chain",
     desc: "A 0–100 score from holder concentration, dev position, deployer history, and sniper behavior. Factor-by-factor breakdown — no black boxes.",
     icon: "◉",
-    color: "from-cyan-500 to-indigo-500",
+    color: "from-cyan-500 to-blue-500",
   },
   {
     title: "Dev-sell alerts",
@@ -26,19 +59,19 @@ const FEATURES = [
     title: "AI rug reports",
     desc: "One click → Claude analyzes the on-chain picture and writes a verdict with red flags. Free, 3 per day.",
     icon: "✦",
-    color: "from-fuchsia-500 to-purple-500",
+    color: "from-emerald-500 to-teal-400",
   },
   {
     title: "Sniper & bundle detection",
     desc: "Buyers in the first block, clustered entries, mass early exits — the classic rug choreography, surfaced automatically.",
     icon: "◎",
-    color: "from-emerald-500 to-teal-400",
+    color: "from-teal-500 to-cyan-400",
   },
   {
     title: "Watchlist + wallet",
     desc: "Track tokens across tabs, connect your Phantom or Solflare wallet, and spot your own bags on the radar.",
     icon: "⬡",
-    color: "from-blue-500 to-indigo-400",
+    color: "from-blue-500 to-cyan-400",
   },
 ];
 
@@ -96,7 +129,7 @@ export default function Features() {
               <defs>
                 <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stopColor="#06b6d4" />
-                  <stop offset="100%" stopColor="#a855f7" />
+                  <stop offset="100%" stopColor="#10b981" />
                 </linearGradient>
               </defs>
             </svg>
@@ -119,15 +152,21 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: (i % 3) * 0.1 }}
-              className="group glass relative overflow-hidden rounded-2xl p-6 transition-colors hover:bg-white/[0.05]"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <div
-                className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${f.color} text-lg text-white shadow-lg`}
-              >
-                {f.icon}
-              </div>
-              <h3 className="font-display text-lg font-semibold text-white">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.desc}</p>
+              <TiltCard className="group glass relative h-full overflow-hidden rounded-2xl p-6 transition-[border-color,background] duration-300 hover:bg-white/[0.05] hover:border-cyan-400/30">
+                <div className="spotlight" />
+                <div
+                  className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${f.color} text-lg text-white shadow-lg`}
+                  style={{ transform: "translateZ(24px)" }}
+                >
+                  {f.icon}
+                </div>
+                <h3 className="font-display text-lg font-semibold text-white" style={{ transform: "translateZ(16px)" }}>
+                  {f.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.desc}</p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
