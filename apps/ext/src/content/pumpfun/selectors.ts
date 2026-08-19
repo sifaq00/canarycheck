@@ -1,0 +1,1 @@
+export const COIN_MINT_RE = /\/coin\/([1-9A-HJ-NP-Za-km-z]{32,44})/;

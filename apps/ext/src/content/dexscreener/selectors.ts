@@ -1,0 +1,1 @@
+export const PAIR_MINT_RE = /\/solana\/([1-9A-HJ-NP-Za-km-z]{32,44})/;
