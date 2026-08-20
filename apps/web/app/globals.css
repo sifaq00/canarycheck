@@ -273,8 +273,20 @@ html.lenis body {
   pointer-events: none;
   z-index: 1;
   will-change: transform, opacity;
-  filter: drop-shadow(0 -2px 10px rgba(2, 132, 199, 0.35)) drop-shadow(0 -1px 4px rgba(56, 189, 248, 0.4));
   animation: single-n-wave-linear 5.8s linear infinite;
+}
+
+/* Pause all hero per-frame animations when the hero is scrolled out of view */
+.hero-anim-paused .hero-single-n-wave,
+.hero-anim-paused .hero-title-lighting-1,
+.hero-anim-paused .hero-title-lighting-2,
+.hero-anim-paused .card-wave-reaction,
+.hero-anim-paused .search-wave-reaction,
+.hero-anim-paused .chips-wave-reaction,
+.hero-anim-paused .subtitle-wave-reaction,
+.hero-anim-paused .badge-wave-reaction,
+.hero-anim-paused .aurora {
+  animation-play-state: paused;
 }
 
 /* =========================================================================

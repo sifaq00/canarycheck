@@ -37,7 +37,7 @@ export default function Nav() {
         <a href="#top" className="flex items-center gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.webp"
+            src="/logo-sm.png"
             alt="CanaryCheck"
             width={34}
             height={34}
