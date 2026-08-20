@@ -374,7 +374,7 @@ export default function Hero() {
         {/* 3 Floating Bento Cards Deck (Rising from Horizon Curve with 3D Staggered Parallax) */}
         <div className="relative z-20 mt-14 w-full max-w-5xl">
           {/* Single Pure Glowing Letter-n Dome Wave (Radiating from the Horizon Dome Rim) */}
-          <motion.div style={{ y: horizonY }} className="hero-single-n-wave pointer-events-none z-[1]">
+          <div className="hero-single-n-wave pointer-events-none z-[1]">
             <svg viewBox="0 0 1000 250" className="w-full h-full overflow-visible" fill="none">
               <path
                 d="M 15,240 A 520,225 0 0,1 985,240"
@@ -395,10 +395,10 @@ export default function Hero() {
                 </linearGradient>
               </defs>
             </svg>
-          </motion.div>
+          </div>
 
           {/* Glowing Horizon Arc Behind the Cards */}
-          <motion.div style={{ y: horizonY }} className="horizon-glow bottom-[-80px] z-[2]" />
+          <div className="horizon-glow bottom-[-80px] z-[2]" />
 
           {/* Cards Flex/Grid with Staggered Parallax Depths */}
           <div className="relative z-20 grid items-end gap-6 md:grid-cols-3">

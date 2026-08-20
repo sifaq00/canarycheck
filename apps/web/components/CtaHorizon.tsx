@@ -1,21 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useState } from "react";
+import { motion } from "motion/react";
 import { Check, ArrowRight } from "lucide-react";
 
 export default function CtaHorizon() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const domeY = useTransform(scrollYProgress, [0, 1], [60, -40]);
-  const aurorasY = useTransform(scrollYProgress, [0, 1], [80, -30]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,15 +18,15 @@ export default function CtaHorizon() {
   };
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-[600px] flex-col items-center justify-center overflow-hidden pt-28 pb-20 text-center">
-      {/* Massive Curved Glowing Horizon Dome (Rising with Parallax) */}
-      <motion.div style={{ y: domeY }} className="horizon-dome bottom-[-160px]" />
+    <section className="relative flex min-h-[600px] flex-col items-center justify-center overflow-hidden pt-28 pb-20 text-center">
+      {/* Massive Curved Glowing Horizon Dome (Centered) */}
+      <div className="horizon-dome bottom-[-160px]" />
       
-      {/* Aurora Ambience with Parallax */}
-      <motion.div style={{ y: aurorasY }} className="pointer-events-none absolute inset-0">
+      {/* Aurora Ambience */}
+      <div className="pointer-events-none absolute inset-0">
         <div className="aurora h-[450px] w-[450px] bg-amber-500/15 bottom-[10%] left-[25%]" />
         <div className="aurora h-[400px] w-[400px] bg-sky-500/15 bottom-[15%] right-[25%]" style={{ animationDelay: "-9s" }} />
-      </motion.div>
+      </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-6">
         
