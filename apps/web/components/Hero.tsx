@@ -1,24 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 
 const SCRAMBLE = "!<>-_\\/[]{}—=+*^?#________";
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const [mx, setMx] = useState(50);
   const [my, setMy] = useState(50);
   const [scramble, setScramble] = useState(false);
   const [display, setDisplay] = useState("ape in.");
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   useEffect(() => {
     const el = heroRef.current;
@@ -74,7 +66,7 @@ export default function Hero() {
       <div className="aurora h-[380px] w-[380px] bg-blue-500/25 top-[10%] right-[8%]" style={{ animationDelay: "-7s" }} />
       <div className="aurora h-[320px] w-[320px] bg-emerald-500/20 bottom-[-60px] left-[35%]" style={{ animationDelay: "-14s" }} />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <motion.div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

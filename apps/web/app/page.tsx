@@ -9,7 +9,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
-    <main id="top" className="relative min-h-screen overflow-x-hidden">
+    <main id="top" className="relative min-h-screen">
       <ScrollProgress />
       <Nav />
       <Hero />

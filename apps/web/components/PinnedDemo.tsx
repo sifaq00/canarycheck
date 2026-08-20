@@ -58,24 +58,23 @@ export default function PinnedDemo() {
           end: "+=700%",
           scrub: 0.6,
           pin: sticky,
-          pinType: "transform",
           anticipatePin: 1,
         },
       });
 
-      steps.forEach((step, i) => {
-        const seg = 1.75;
-        const base = i * seg;
+      let pos = 0;
+      steps.forEach((step) => {
         tl.fromTo(
           step,
           { opacity: 0, y: 32 },
-          { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
-          base
+          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+          pos
         ).to(
           step,
-          { opacity: 0, y: -32, duration: 0.35, ease: "power2.in" },
-          base + 1.3
+          { opacity: 0, y: -32, duration: 0.3, ease: "power2.in" },
+          pos + 1.15
         );
+        pos += 1.3; // next step fades in while this one fades out — crossfade
       });
 
       // Panel: subtle scale-down while pinned
