@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Plus } from "lucide-react";
 
 const FAQS = [
   {
@@ -26,7 +27,7 @@ const FAQS = [
   },
   {
     q: "Is this financial advice?",
-    a: "No. Rug Radar surfaces data and flags risk patterns. It never tells you to buy or sell. Always do your own research.",
+    a: "No. CanaryCheck surfaces data and flags risk patterns. It never tells you to buy or sell. Always do your own research.",
   },
 ];
 
@@ -36,10 +37,10 @@ export default function Faq() {
   return (
     <section className="relative py-28" id="faq">
       <div className="mx-auto max-w-3xl px-6">
-        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cyan-400">
-          / faq
+        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-amber-700 font-bold">
+          — QUICK QUESTIONS
         </p>
-        <h2 className="mb-12 font-display text-4xl font-bold text-white sm:text-5xl">
+        <h2 className="mb-12 font-display text-4xl font-extrabold text-slate-900 sm:text-5xl">
           Questions, <span className="grad-text">answered.</span>
         </h2>
 
@@ -51,21 +52,21 @@ export default function Faq() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="glass overflow-hidden rounded-2xl"
+              className="glass overflow-hidden rounded-3xl border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.04)] bg-white"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               >
-                <span className="font-display text-base font-semibold text-white sm:text-lg">
+                <span className="font-display text-base font-bold text-slate-900 sm:text-lg">
                   {f.q}
                 </span>
                 <span
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/15 text-sm text-slate-300 transition-transform duration-300 ${
-                    open === i ? "rotate-45" : ""
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-transform duration-300 ${
+                    open === i ? "rotate-45 text-amber-700 border-amber-400 bg-amber-50" : "bg-slate-50"
                   }`}
                 >
-                  +
+                  <Plus className="h-3.5 w-3.5" />
                 </span>
               </button>
               <AnimatePresence initial={false}>
@@ -76,7 +77,7 @@ export default function Faq() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <p className="px-6 pb-6 text-sm leading-relaxed text-slate-400">{f.a}</p>
+                    <p className="px-6 pb-6 text-sm leading-relaxed text-slate-600 border-t border-slate-100 pt-3">{f.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

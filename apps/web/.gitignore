@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # extension artifact
-/public/rugradar-ext.zip
+/public/canarycheck-ext.zip

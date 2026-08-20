@@ -20,7 +20,7 @@ export default function ScrollProgress() {
     <motion.div
       ref={ref}
       style={{ scaleX }}
-      className={`fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 transition-opacity duration-300 ${
+      className={`fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-amber-500 to-cyan-600 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     />

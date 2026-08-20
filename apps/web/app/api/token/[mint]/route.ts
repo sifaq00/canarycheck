@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { scoreToken, type TokenData } from "@rugradar/core";
+import { scoreToken, type TokenData } from "@canarycheck/core";
 import { getPumpCoin, getCreatorTokens } from "@/lib/pump";
 import { getTopHolders } from "@/lib/helius";
 import { getCached, setCached } from "@/lib/cache";

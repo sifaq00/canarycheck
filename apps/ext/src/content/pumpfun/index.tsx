@@ -17,7 +17,7 @@ let currentMint = "";
 function ensureRoot() {
   if (root) return root;
   const div = document.createElement("div");
-  div.id = "rugradar-root";
+  div.id = "canarycheck-root";
   Object.assign(div.style, {
     position: "fixed",
     top: 12,
@@ -189,7 +189,7 @@ function observeRoute() {
     if (currentMint) {
       ensureRoot().render(<Panel mint={currentMint} />);
     } else {
-      document.getElementById("rugradar-root")?.remove();
+      document.getElementById("canarycheck-root")?.remove();
       root = null;
     }
   }

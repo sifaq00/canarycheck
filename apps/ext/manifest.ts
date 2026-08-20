@@ -2,9 +2,9 @@ import { defineManifest } from "@crxjs/vite-plugin";
 
 export default defineManifest({
   manifest_version: 3,
-  name: "Rug Radar",
+  name: "CanaryCheck",
   version: "0.1.0",
-  description: "Real-time pump.fun risk intelligence overlay.",
+  description: "Real-time pump.fun risk intelligence overlay. Canary in the coal mine.",
   permissions: ["storage", "alarms"],
   host_permissions: [
     "https://pump.fun/*",

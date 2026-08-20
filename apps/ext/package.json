@@ -1,5 +1,5 @@
 {
-  "name": "@rugradar/ext",
+  "name": "@canarycheck/ext",
   "private": true,
   "type": "module",
   "scripts": {

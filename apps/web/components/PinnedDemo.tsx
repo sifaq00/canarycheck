@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRight, ArrowDownRight, Sparkles, Plus } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,68 +115,78 @@ export default function PinnedDemo() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative">
+    <section ref={sectionRef} className="relative" id="demo">
       <div ref={stickyRef} className="relative flex min-h-screen items-center overflow-hidden">
-        <div className="pin-glow aurora h-[500px] w-[500px] bg-cyan-500/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <div className="pin-glow aurora h-[500px] w-[500px] bg-amber-500/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
+          <p className="absolute top-8 left-6 font-mono text-xs uppercase tracking-widest text-amber-700 font-bold md:left-12">
+            — 03 / LIVE DEMO
+          </p>
           {/* Live panel mockup */}
           <div ref={panelRef} className="relative order-2 md:order-1">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-cyan-500/10 via-transparent to-emerald-500/10 blur-xl" />
-            <div className="glass relative rounded-2xl p-5 font-mono text-xs">
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-amber-500/10 via-transparent to-cyan-500/10 blur-xl" />
+            <div className="glass relative rounded-3xl p-6 font-mono text-xs border border-slate-200/90 shadow-[0_20px_50px_rgba(0,0,0,0.06)] bg-white">
               <div className="flex items-center gap-1.5 pb-4">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-                <span className="ml-3 text-slate-500">pump.fun/coin/9xQz…pump</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                <span className="ml-3 text-slate-500 font-medium">pump.fun/coin/9xQz…pump</span>
               </div>
 
-              <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-slate-50 p-4">
                 <div>
-                  <div className="font-display text-4xl font-bold text-white">74</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-widest text-slate-500">
+                  <div className="font-display text-4xl font-extrabold text-slate-900">74</div>
+                  <div className="mt-1 text-[10px] uppercase font-bold tracking-widest text-slate-500">
                     risk score
                   </div>
                 </div>
                 <div className="space-y-1.5 text-right">
-                  <div className="rounded bg-white/5 px-2 py-1 text-[10px] text-slate-400">
-                    TOP-10 HOLDERS <span className="text-amber-400">82%</span>
+                  <div className="rounded-lg bg-white border border-slate-200 px-2 py-1 text-[10px] font-medium text-slate-700 shadow-xs">
+                    TOP-10 HOLDERS <span className="text-amber-700 font-bold">82%</span>
                   </div>
-                  <div className="rounded bg-white/5 px-2 py-1 text-[10px] text-slate-400">
-                    DEV HOLDING <span className="text-red-400">18%</span>
+                  <div className="rounded-lg bg-white border border-slate-200 px-2 py-1 text-[10px] font-medium text-slate-700 shadow-xs">
+                    DEV HOLDING <span className="text-red-700 font-bold">18%</span>
                   </div>
-                  <div className="rounded bg-white/5 px-2 py-1 text-[10px] text-slate-400">
-                    SNIPERS <span className="text-cyan-400">47 WALLETS</span>
+                  <div className="rounded-lg bg-white border border-slate-200 px-2 py-1 text-[10px] font-medium text-slate-700 shadow-xs">
+                    SNIPERS <span className="text-cyan-800 font-bold">47 WALLETS</span>
                   </div>
                 </div>
               </div>
 
               <div className="mt-3 space-y-1.5">
-                <div className="flex items-center justify-between rounded bg-white/[0.03] px-3 py-2 text-[11px]">
-                  <span className="text-slate-400">▲ BUY 0.45 SOL</span>
-                  <span className="text-slate-600">9xQz…31aB</span>
+                <div className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-[11px] text-slate-800 font-medium">
+                  <span className="flex items-center gap-1 text-emerald-700 font-bold">
+                    <ArrowUpRight className="h-3 w-3" /> BUY 0.45 SOL
+                  </span>
+                  <span className="text-slate-500">9xQz…31aB</span>
                 </div>
-                <div className="flex items-center justify-between rounded bg-red-500/15 px-3 py-2 text-[11px] text-red-400">
-                  <span><b>DEV</b> ▼ SELL 2.40 SOL</span>
-                  <span className="text-red-400/60">9xQz…31aB</span>
+                <div className="flex items-center justify-between rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-[11px] text-red-700 font-bold">
+                  <span className="flex items-center gap-1">
+                    <ArrowDownRight className="h-3 w-3 text-red-500" />
+                    <b>DEV</b> SELL 2.40 SOL
+                  </span>
+                  <span className="text-red-700 font-semibold">9xQz…31aB</span>
                 </div>
-                <div className="flex items-center justify-between rounded bg-white/[0.03] px-3 py-2 text-[11px]">
-                  <span className="text-slate-400">▲ BUY 0.12 SOL</span>
-                  <span className="text-slate-600">kLm9…77cD</span>
+                <div className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-[11px] text-slate-800 font-medium">
+                  <span className="flex items-center gap-1 text-emerald-700 font-bold">
+                    <ArrowUpRight className="h-3 w-3" /> BUY 0.12 SOL
+                  </span>
+                  <span className="text-slate-500">kLm9…77cD</span>
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
                 <div className="flex gap-2">
-                  <span className="rounded-full bg-cyan-500/15 px-3 py-1 text-[10px] font-semibold text-cyan-400">
-                    + Watchlist
+                  <span className="flex items-center gap-1 rounded-full bg-cyan-50 border border-cyan-200 px-3 py-1 text-[10px] font-bold text-cyan-700">
+                    <Plus className="h-2.5 w-2.5" /> Watchlist
                   </span>
-                  <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-[10px] font-semibold text-emerald-400">
-                    ⚡ AI Report
+                  <span className="flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-[10px] font-bold text-emerald-700">
+                    <Sparkles className="h-2.5 w-2.5" /> AI Report
                   </span>
                 </div>
-                <span className="flex items-center gap-1.5 text-[10px] text-emerald-400">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                <span className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
                   LIVE
                 </span>
               </div>
@@ -194,20 +205,20 @@ export default function PinnedDemo() {
                     {s.step}
                   </span>
                   <span
-                    className="rounded-full px-3 py-1 font-mono text-[10px] font-semibold"
+                    className="rounded-full px-3 py-1 font-mono text-[10px] font-bold"
                     style={{
                       color: s.color,
-                      background: `${s.color}1a`,
+                      background: `${s.color}15`,
                       border: `1px solid ${s.color}40`,
                     }}
                   >
                     {s.tag}
                   </span>
                 </div>
-                <h3 className="font-display text-3xl font-bold text-white sm:text-4xl">
+                <h3 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
                   {s.title}
                 </h3>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600">
                   {s.desc}
                 </p>
               </div>

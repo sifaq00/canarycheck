@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Check } from "lucide-react";
 
 const TIERS = [
   {
@@ -42,15 +43,15 @@ export default function Pricing() {
   return (
     <section className="relative py-28" id="pricing">
       <div className="mx-auto max-w-5xl px-6">
-        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cyan-400">
-          / pricing
+        <p className="mb-3 font-mono text-xs uppercase tracking-widest text-amber-700 font-bold">
+          — ACCESS & PRICING
         </p>
-        <h2 className="mb-4 font-display text-4xl font-bold text-white sm:text-5xl">
+        <h2 className="mb-4 font-display text-4xl font-extrabold text-slate-900 sm:text-5xl">
           Free for the masses.
           <br />
           <span className="grad-gold">Premium for the holders.</span>
         </h2>
-        <p className="mb-14 max-w-lg text-sm text-slate-400">
+        <p className="mb-14 max-w-lg text-sm text-slate-600">
           The radar stays free. Power users who hold the $RGRD utility token
           unlock the full arsenal — same playbook as every tool in this space.
         </p>
@@ -63,39 +64,39 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.12 }}
-              className={`relative rounded-3xl p-8 ${
+              className={`relative rounded-3xl p-8 transition-all ${
                 t.highlight
-                  ? "border border-amber-400/40 bg-gradient-to-b from-amber-500/10 to-transparent shadow-[0_0_60px_-15px_rgba(245,158,11,0.35)]"
-                  : "glass"
+                  ? "border border-amber-300/90 bg-gradient-to-b from-amber-50/70 via-white to-slate-50 shadow-[0_20px_50px_rgba(245,158,11,0.12)]"
+                  : "glass border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.04)] bg-white"
               }`}
             >
               {t.highlight && (
-                <span className="absolute -top-3 left-8 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+                <span className="absolute -top-3 left-8 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm">
                   Most powerful
                 </span>
               )}
-              <div className="font-display text-lg font-semibold text-white">{t.name}</div>
+              <div className="font-display text-lg font-bold text-slate-900">{t.name}</div>
               <div className="mt-3 flex items-baseline gap-2">
-                <span className="font-display text-5xl font-bold text-white">{t.price}</span>
-                <span className="font-mono text-xs text-slate-500">{t.per}</span>
+                <span className="font-display text-5xl font-extrabold text-slate-900">{t.price}</span>
+                <span className="font-mono text-xs text-slate-500 font-medium">{t.per}</span>
               </div>
-              <p className="mt-3 text-sm text-slate-400">{t.desc}</p>
+              <p className="mt-3 text-sm text-slate-600 font-normal leading-relaxed">{t.desc}</p>
 
               <ul className="mt-6 space-y-2.5">
                 {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
-                    <span className={t.highlight ? "text-amber-400" : "text-emerald-400"}>✓</span>
-                    {f}
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-slate-800 font-medium">
+                    <Check className={`h-4 w-4 shrink-0 mt-0.5 ${t.highlight ? "text-amber-700 font-bold" : "text-emerald-700"}`} />
+                    <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
               <a
                 href={t.href}
-                className={`mt-8 block rounded-xl py-3.5 text-center font-semibold transition-transform hover:scale-[1.02] ${
+                className={`mt-8 block rounded-xl py-3.5 text-center font-bold transition-all shadow-xs ${
                   t.highlight
-                    ? "bg-gradient-to-r from-amber-400 to-yellow-500 text-black"
-                    : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                    ? "bg-slate-900 text-white hover:bg-slate-800"
+                    : "border border-slate-200 bg-slate-50 text-slate-800 hover:bg-slate-100"
                 }`}
               >
                 {t.cta}
@@ -104,7 +105,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="mt-8 text-center font-mono text-xs text-slate-600">
+        <p className="mt-8 text-center font-mono text-xs text-slate-600 font-medium">
           $RGRD is a utility token for access tiers — not an investment product.
         </p>
       </div>

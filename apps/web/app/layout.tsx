@@ -22,7 +22,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rug Radar — Pump.fun risk intelligence",
+  title: "CanaryCheck — Pump.fun risk intelligence",
   description:
     "Real-time risk scores, dev-sell alerts, deployer history, and AI rug reports for Solana memecoins. Inline on pump.fun, X, and DexScreener.",
 };

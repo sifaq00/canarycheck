@@ -59,7 +59,7 @@ export function ScoreBadge({ score }: { score: Score | null }) {
         border: `1px solid ${band ?? "#9ca3af"}55`,
       }}
     >
-      🛡 Rug Radar {score ? `· ${score.total}` : "…"}
+      🛡 CanaryCheck {score ? `· ${score.total}` : "…"}
     </span>
   );
 }

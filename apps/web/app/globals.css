@@ -13,6 +13,8 @@ html {
 body {
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 /* Lenis smooth scroll */
@@ -30,12 +32,12 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Aurora blobs — pure CSS, zero GPU cost at rest */
+/* Aurora blobs — soft pastel glowing ambient meshes for Light Mode */
 .aurora {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.5;
+  filter: blur(100px);
+  opacity: 0.45;
   will-change: transform;
   animation: drift 22s ease-in-out infinite alternate;
   pointer-events: none;
@@ -65,31 +67,32 @@ html.lenis body {
   }
 }
 
-/* Grid backdrop */
+/* Grid backdrop for clean porcelain */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
 }
 
-/* Glass card */
+/* Clean Porcelain Glass Card */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
 }
 
 /* Gradient text */
 .grad-text {
-  background: linear-gradient(110deg, #06b6d4 0%, #3b82f6 45%, #10b981 100%);
+  background: linear-gradient(110deg, #d97706 0%, #0284c7 50%, #2563eb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .grad-gold {
-  background: linear-gradient(110deg, #f59e0b, #fbbf24 60%, #d97706);
+  background: linear-gradient(110deg, #d97706, #f59e0b 60%, #b45309);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -109,7 +112,7 @@ html.lenis body {
   transition: opacity 0.3s;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(6, 182, 212, 0.08),
+    rgba(2, 132, 199, 0.04),
     transparent 45%
   );
 }
@@ -121,4 +124,329 @@ html.lenis body {
 .tilt-card {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+/* Orbital rotation animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 28s linear infinite;
+}
+.animate-float {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-subtle 4s ease-in-out 2s infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Reverse marquee */
+.marquee-reverse {
+  animation: marquee-rev 36s linear infinite;
+}
+.marquee-reverse:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee-rev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Horizon curved light arc */
+.horizon-glow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  max-width: 1600px;
+  height: 380px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(
+    ellipse at top,
+    #ffffff 20%,
+    #f8fafc 50%,
+    rgba(240, 249, 255, 0.98) 75%,
+    rgba(224, 242, 254, 0.9) 100%
+  );
+  border-top: 2px solid rgba(2, 132, 199, 0.35);
+  box-shadow: 0 -8px 45px rgba(2, 132, 199, 0.12), 0 20px 40px rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Horizon curved dome for bottom CTA */
+.horizon-dome {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  max-width: 1800px;
+  height: 500px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(2, 132, 199, 0.18) 0%,
+    rgba(245, 158, 11, 0.16) 30%,
+    rgba(37, 99, 235, 0.1) 60%,
+    transparent 75%
+  );
+  box-shadow: 0 -10px 80px rgba(2, 132, 199, 0.15), 0 -2px 4px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+}
+
+/* =========================================================================
+   Hero Single Letter-n Dome Wave & Synced Text Spotlight (Flat Linear Motion)
+   ========================================================================= */
+
+@keyframes single-n-wave-linear {
+  0% {
+    transform: translate3d(-50%, 0, 0) scale(1);
+    opacity: 0.65;
+  }
+  25% {
+    opacity: 0.58;
+    transform: translate3d(-50%, -260px, 0) scale(1.18);
+  }
+  50% {
+    opacity: 0.45;
+    transform: translate3d(-50%, -550px, 0) scale(1.45);
+  }
+  75% {
+    opacity: 0.22;
+    transform: translate3d(-50%, -850px, 0) scale(1.72);
+  }
+  100% {
+    transform: translate3d(-50%, -1150px, 0) scale(1.94);
+    opacity: 0;
+  }
+}
+
+.hero-single-n-wave {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  width: 135%;
+  max-width: 1500px;
+  height: 250px;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 -2px 10px rgba(2, 132, 199, 0.35)) drop-shadow(0 -1px 4px rgba(56, 189, 248, 0.4));
+  animation: single-n-wave-linear 5.8s linear infinite;
+}
+
+/* =========================================================================
+   Hero Title Lighting Beam Sweep (Golden Ratio Speed ~1.0s Duration)
+   ========================================================================= */
+
+/* 1. Baris Bawah: "Early & In Place." (Menyapu pas & dinamis dari 44% ke 61%) */
+@keyframes text-lighting-sweep-line2 {
+  0%, 43% {
+    background-position: 100% 0;
+  }
+  61%, 100% {
+    background-position: 0% 0;
+  }
+}
+
+.hero-title-lighting-2 {
+  background: linear-gradient(
+    90deg,
+    #0284c7 0%,
+    #0284c7 38%,
+    #38bdf8 46%,
+    #ffffff 50%,
+    #38bdf8 54%,
+    #0284c7 62%,
+    #0284c7 100%
+  );
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-lighting-sweep-line2 5.8s linear infinite;
+}
+
+/* 2. Baris Atas: "Spot Every Solana Rug" (Menyapu pas & dinamis dari 48% ke 65%) */
+@keyframes text-lighting-sweep-line1 {
+  0%, 47% {
+    background-position: 100% 0;
+  }
+  65%, 100% {
+    background-position: 0% 0;
+  }
+}
+
+.hero-title-lighting-1 {
+  background: linear-gradient(
+    90deg,
+    #0f172a 0%,
+    #0f172a 38%,
+    #38bdf8 46%,
+    #ffffff 50%,
+    #38bdf8 54%,
+    #0f172a 62%,
+    #0f172a 100%
+  );
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-lighting-sweep-line1 5.8s linear infinite;
+}
+
+/* =========================================================================
+   Interactive Wave Impact Reactions (Triggered sequentially as wave rises)
+   ========================================================================= */
+
+/* 1. Bento Cards Deck Impact (Cycle 2% - 12%) */
+@keyframes card-wave-reaction {
+  0%, 1% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border-color: rgba(226, 232, 240, 0.9);
+    transform: translateY(0);
+  }
+  7% {
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.16), 0 0 25px rgba(56, 189, 248, 0.25);
+    border-color: rgba(14, 165, 233, 0.6);
+    transform: translateY(-4px);
+  }
+  13%, 100% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border-color: rgba(226, 232, 240, 0.9);
+    transform: translateY(0);
+  }
+}
+
+.card-wave-reaction {
+  animation: card-wave-reaction 5.8s ease-in-out infinite;
+}
+
+/* 2. Search Bar & Preset Chips Impact (Cycle 20% - 30%) */
+@keyframes search-wave-reaction {
+  0%, 19% {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    border-color: rgba(226, 232, 240, 0.9);
+    transform: translateY(0);
+  }
+  25% {
+    box-shadow: 0 12px 35px rgba(2, 132, 199, 0.2), 0 0 20px rgba(56, 189, 248, 0.35);
+    border-color: rgba(2, 132, 199, 0.6);
+    transform: translateY(-3px);
+  }
+  31%, 100% {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    border-color: rgba(226, 232, 240, 0.9);
+    transform: translateY(0);
+  }
+}
+
+.search-wave-reaction {
+  animation: search-wave-reaction 5.8s ease-in-out infinite;
+}
+
+@keyframes chip-wave-reaction {
+  0%, 20% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  26% {
+    transform: translateY(-2px);
+    filter: brightness(1.08) drop-shadow(0 2px 8px rgba(2, 132, 199, 0.3));
+  }
+  32%, 100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+}
+
+.chips-wave-reaction {
+  animation: chip-wave-reaction 5.8s ease-in-out infinite;
+}
+
+/* 3. Subtitle Scan Glimmer (Cycle 34% - 42%) */
+@keyframes subtitle-wave-reaction {
+  0%, 33% {
+    color: #475569;
+    text-shadow: none;
+  }
+  38% {
+    color: #0f172a;
+    text-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+  }
+  43%, 100% {
+    color: #475569;
+    text-shadow: none;
+  }
+}
+
+.subtitle-wave-reaction {
+  animation: subtitle-wave-reaction 5.8s ease-in-out infinite;
+}
+
+/* 4. Top Live Badge Impact (Cycle 56% - 66%) */
+@keyframes badge-wave-reaction {
+  0%, 55% {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  61% {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.28), 0 0 15px rgba(56, 189, 248, 0.4);
+    border-color: rgba(2, 132, 199, 0.65);
+  }
+  67%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+}
+
+.badge-wave-reaction {
+  animation: badge-wave-reaction 5.8s ease-in-out infinite;
 }

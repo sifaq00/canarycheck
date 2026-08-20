@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@rugradar/core"],
+  transpilePackages: ["@canarycheck/core"],
 };
 
 export default nextConfig;

@@ -41,6 +41,9 @@ export default function Stats() {
 
   return (
     <section className="relative border-y border-white/10 bg-white/[0.02] py-16">
+      <p className="mb-10 text-center font-mono text-xs uppercase tracking-widest text-cyan-400">
+        — BY THE NUMBERS
+      </p>
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-6 lg:grid-cols-4">
         {STATS.map((s) => (
           <div key={s.label} ref={ref} className="text-center">

@@ -18,7 +18,7 @@ export default function App() {
   return (
     <div className="flex h-full flex-col">
       <header className="border-b border-slate-800 p-3">
-        <h1 className="text-sm font-bold text-slate-100">🛡 Rug Radar</h1>
+        <h1 className="text-sm font-bold text-slate-100">🛡 CanaryCheck</h1>
       </header>
       <nav className="flex gap-1 border-b border-slate-800 px-2 py-2">
         {TABS.map((t) => (
