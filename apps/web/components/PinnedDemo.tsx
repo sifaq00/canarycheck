@@ -192,11 +192,11 @@ export default function PinnedDemo() {
 
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
             
-            {/* Left Column: Interactive Live Mockup Card (7 Cols) - Compact Balanced Height (380px) */}
+            {/* Left Column: Interactive Live Mockup Card (7 Cols) - Ultra-Snug Compact Card (Zero Blank Space) */}
             <div ref={panelRef} className="relative lg:col-span-7">
-              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-cyan-500/10 via-sky-500/5 to-amber-500/10 blur-xl opacity-60" />
+              <div className="absolute -inset-2.5 rounded-3xl bg-gradient-to-tr from-cyan-500/10 via-sky-500/5 to-amber-500/10 blur-xl opacity-60" />
               
-              <div className="glass relative flex h-[385px] flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-5 font-mono shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+              <div className="glass relative flex flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-4 font-mono shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
                 {/* Window Header */}
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 text-xs">
                   <div className="flex items-center gap-2">
@@ -208,41 +208,41 @@ export default function PinnedDemo() {
                       pump.fun/coin/9xQz…pump
                     </span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shadow-xs">
+                  <div className="flex items-center gap-1.5 text-[10px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shadow-xs">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
                     LIVE HOOK
                   </div>
                 </div>
 
-                {/* DYNAMIC SCENE PANELS (Compact 265px container with tight cohesive spacing) */}
-                <div className="relative h-[265px] w-full pt-2">
+                {/* DYNAMIC SCENE PANELS (Ultra-tight 160px height container - elements naturally stacked with zero gap) */}
+                <div className="relative h-[165px] w-full my-2.5">
                   
                   {/* State 1: Risk Score Dial Focus */}
-                  <div className="panel-state-view absolute inset-0 flex flex-col justify-between">
-                    <div className="flex items-center justify-between rounded-2xl border border-cyan-200/90 bg-gradient-to-r from-cyan-50/70 via-white to-sky-50/50 p-4 shadow-xs">
+                  <div className="panel-state-view absolute inset-0 space-y-2">
+                    <div className="flex items-center justify-between rounded-xl border border-cyan-200/90 bg-gradient-to-r from-cyan-50/70 via-white to-sky-50/50 p-3 shadow-xs">
                       <div>
-                        <div className="font-display text-4xl font-extrabold text-slate-900 tracking-tight">
-                          74<span className="text-base text-slate-500 font-normal">/100</span>
+                        <div className="font-display text-3xl font-extrabold text-slate-900 tracking-tight leading-none">
+                          74<span className="text-sm text-slate-500 font-normal">/100</span>
                         </div>
-                        <div className="mt-1 flex items-center gap-1 font-mono text-[11px] uppercase font-bold tracking-wider text-amber-700">
-                          <ShieldAlert className="h-3.5 w-3.5" /> High Risk
+                        <div className="mt-1 flex items-center gap-1 font-mono text-[10px] uppercase font-bold tracking-wider text-amber-700">
+                          <ShieldAlert className="h-3 w-3" /> High Risk Detected
                         </div>
                       </div>
                       <div className="space-y-1 text-right">
-                        <div className="rounded-lg bg-white border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-700 shadow-xs">
+                        <div className="rounded-md bg-white border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-700 shadow-xs">
                           TOP-10 <span className="text-amber-700 font-bold">82%</span>
                         </div>
-                        <div className="rounded-lg bg-white border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-700 shadow-xs">
+                        <div className="rounded-md bg-white border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-700 shadow-xs">
                           DEV HOLD <span className="text-rose-700 font-bold">18%</span>
                         </div>
-                        <div className="rounded-lg bg-white border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-700 shadow-xs">
+                        <div className="rounded-md bg-white border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-700 shadow-xs">
                           SNIPERS <span className="text-cyan-800 font-bold">47 WALLETS</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="rounded-2xl border border-slate-200/80 bg-slate-50 p-3 text-xs space-y-1.5">
-                      <div className="flex justify-between text-slate-700 font-semibold text-[11px]">
+                    <div className="rounded-xl border border-slate-200/80 bg-slate-50 p-2.5 text-xs space-y-1">
+                      <div className="flex justify-between text-slate-700 font-semibold text-[10px]">
                         <span>Liquidity Curve Status</span>
                         <span className="text-emerald-700 font-bold">Raydium Graduation 64%</span>
                       </div>
@@ -253,37 +253,37 @@ export default function PinnedDemo() {
                   </div>
 
                   {/* State 2: Dev Sell Alert Live Focus */}
-                  <div className="panel-state-view absolute inset-0 flex flex-col justify-between">
-                    <div className="rounded-2xl border border-rose-200 bg-rose-50/90 p-3 text-xs shadow-xs">
-                      <div className="flex items-center justify-between text-rose-800 font-bold pb-1.5 border-b border-rose-200">
-                        <span className="flex items-center gap-1.5">
+                  <div className="panel-state-view absolute inset-0 space-y-1.5">
+                    <div className="rounded-xl border border-rose-200 bg-rose-50/90 p-2.5 text-xs shadow-xs">
+                      <div className="flex items-center justify-between text-rose-800 font-bold pb-1 border-b border-rose-200">
+                        <span className="flex items-center gap-1 text-[11px]">
                           <Flame className="h-3.5 w-3.5 text-rose-600" />
                           URGENT INSIDER DUMP ALERT
                         </span>
-                        <span className="text-rose-600 font-mono text-[10px]">0.2s AGO</span>
+                        <span className="text-rose-600 font-mono text-[9px]">0.2s AGO</span>
                       </div>
-                      <p className="mt-1.5 text-[11px] text-rose-950 font-mono font-medium leading-snug">
-                        Deployer wallet dumped <b>14.2M tokens (18.4% supply)</b> across 2 bundled transactions.
+                      <p className="mt-1 text-[10px] text-rose-950 font-mono font-medium leading-snug">
+                        Deployer wallet dumped <b>14.2M tokens (18.4% supply)</b>.
                       </p>
                     </div>
 
-                    <div className="space-y-1.5 text-xs">
-                      <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 px-3 py-1.5 text-slate-700 text-[11px]">
-                        <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+                    <div className="space-y-1 text-xs">
+                      <div className="flex items-center justify-between rounded-lg bg-slate-50 border border-slate-200/80 px-2.5 py-1 text-slate-700 text-[10px]">
+                        <span className="flex items-center gap-1 text-emerald-700 font-bold">
                           <ArrowUpRight className="h-3 w-3" /> BUY 0.45 SOL
                         </span>
                         <span className="text-slate-500 font-mono">9xQz…31aB</span>
                       </div>
-                      <div className="flex items-center justify-between rounded-xl bg-rose-50 border border-rose-300 px-3 py-1.5 text-rose-800 font-bold shadow-xs text-[11px]">
-                        <span className="flex items-center gap-1.5">
-                          <ArrowDownRight className="h-3.5 w-3.5 text-rose-600" />
-                          <span className="bg-rose-600 text-white px-1 py-0.5 rounded text-[8px]">DEV</span>
+                      <div className="flex items-center justify-between rounded-lg bg-rose-50 border border-rose-300 px-2.5 py-1 text-rose-800 font-bold shadow-xs text-[10px]">
+                        <span className="flex items-center gap-1">
+                          <ArrowDownRight className="h-3 w-3 text-rose-600" />
+                          <span className="bg-rose-600 text-white px-1 py-0.2 rounded text-[7px]">DEV</span>
                           SELL 2.40 SOL (DUMP)
                         </span>
                         <span className="text-rose-700 font-mono">9xQz…31aB</span>
                       </div>
-                      <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 px-3 py-1.5 text-slate-700 text-[11px]">
-                        <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+                      <div className="flex items-center justify-between rounded-lg bg-slate-50 border border-slate-200/80 px-2.5 py-1 text-slate-700 text-[10px]">
+                        <span className="flex items-center gap-1 text-emerald-700 font-bold">
                           <ArrowUpRight className="h-3 w-3" /> BUY 0.12 SOL
                         </span>
                         <span className="text-slate-500 font-mono">kLm9…77cD</span>
@@ -292,34 +292,34 @@ export default function PinnedDemo() {
                   </div>
 
                   {/* State 3: Deployer Forensics Focus */}
-                  <div className="panel-state-view absolute inset-0 flex flex-col justify-between">
-                    <div className="rounded-2xl border border-amber-200 bg-amber-50/90 p-3 text-xs shadow-xs">
-                      <div className="flex items-center justify-between text-amber-900 font-bold pb-1.5 border-b border-amber-200">
-                        <span className="flex items-center gap-1.5">
+                  <div className="panel-state-view absolute inset-0 space-y-1.5">
+                    <div className="rounded-xl border border-amber-200 bg-amber-50/90 p-2.5 text-xs shadow-xs">
+                      <div className="flex items-center justify-between text-amber-900 font-bold pb-1 border-b border-amber-200">
+                        <span className="flex items-center gap-1 text-[11px]">
                           <History className="h-3.5 w-3.5 text-amber-700" />
                           SERIAL DEPLOYER PROFILE
                         </span>
-                        <span className="text-amber-800 font-mono font-bold text-[10px]">SERIAL RUGGER</span>
+                        <span className="text-amber-800 font-mono font-bold text-[9px]">SERIAL RUGGER</span>
                       </div>
-                      <div className="mt-2 grid grid-cols-3 gap-1.5 text-center">
-                        <div className="bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs">
-                          <div className="text-[9px] text-slate-500 font-semibold">LAUNCHES</div>
-                          <div className="text-sm font-bold text-slate-900">12</div>
+                      <div className="mt-1.5 grid grid-cols-3 gap-1 text-center">
+                        <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-xs">
+                          <div className="text-[8px] text-slate-500 font-semibold">LAUNCHES</div>
+                          <div className="text-xs font-bold text-slate-900">12</div>
                         </div>
-                        <div className="bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs">
-                          <div className="text-[9px] text-slate-500 font-semibold">DEAD &lt; 1 SOL</div>
-                          <div className="text-sm font-bold text-rose-700">9 (75%)</div>
+                        <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-xs">
+                          <div className="text-[8px] text-slate-500 font-semibold">DEAD &lt; 1 SOL</div>
+                          <div className="text-xs font-bold text-rose-700">9 (75%)</div>
                         </div>
-                        <div className="bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs">
-                          <div className="text-[9px] text-slate-500 font-semibold">AVG LIFETIME</div>
-                          <div className="text-sm font-bold text-amber-700">4.2m</div>
+                        <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-xs">
+                          <div className="text-[8px] text-slate-500 font-semibold">AVG LIFETIME</div>
+                          <div className="text-xs font-bold text-amber-700">4.2m</div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="rounded-2xl border border-slate-200/80 bg-slate-50 p-2.5 text-xs text-slate-700">
-                      <div className="text-slate-700 text-[10px] mb-1 font-bold">Prior Deployments:</div>
-                      <div className="space-y-0.5 font-mono text-[10px] text-slate-600">
+                    <div className="rounded-xl border border-slate-200/80 bg-slate-50 p-2 text-xs text-slate-700">
+                      <div className="text-slate-700 text-[9px] mb-0.5 font-bold">Prior Deployments:</div>
+                      <div className="space-y-0.5 font-mono text-[9px] text-slate-600">
                         <div className="flex justify-between"><span>$PEPEWIF ($0 MC)</span><span className="text-rose-700 font-bold">Rugged in 2m</span></div>
                         <div className="flex justify-between"><span>$CATMOON ($0 MC)</span><span className="text-rose-700 font-bold">Rugged in 6m</span></div>
                       </div>
@@ -327,26 +327,26 @@ export default function PinnedDemo() {
                   </div>
 
                   {/* State 4: AI Report Modal Focus */}
-                  <div className="panel-state-view absolute inset-0 flex flex-col justify-between">
-                    <div className="rounded-2xl border border-emerald-200 bg-emerald-50/90 p-3 text-xs shadow-xs">
-                      <div className="flex items-center justify-between text-emerald-950 font-bold pb-1.5 border-b border-emerald-200">
-                        <span className="flex items-center gap-1.5">
+                  <div className="panel-state-view absolute inset-0 space-y-1.5">
+                    <div className="rounded-xl border border-emerald-200 bg-emerald-50/90 p-2.5 text-xs shadow-xs">
+                      <div className="flex items-center justify-between text-emerald-950 font-bold pb-1 border-b border-emerald-200">
+                        <span className="flex items-center gap-1 text-[11px]">
                           <Bot className="h-3.5 w-3.5 text-emerald-700" />
                           CANARY AI VERDICT — CLAUDE 3.5
                         </span>
-                        <span className="bg-emerald-100 border border-emerald-300 text-emerald-800 px-1.5 py-0.5 rounded text-[8px] font-bold">98% CONFIDENCE</span>
+                        <span className="bg-emerald-100 border border-emerald-300 text-emerald-800 px-1.5 py-0.2 rounded text-[7px] font-bold">98% CONFIDENCE</span>
                       </div>
-                      <p className="mt-2 text-[11px] leading-relaxed text-slate-800 font-medium">
-                        &quot;High probability honey-pot / dev exit trap. Top 5 wallets share funding source from Tornado Cash. Dev holds 18% across 3 sub-wallets.&quot;
+                      <p className="mt-1 text-[10px] leading-snug text-slate-800 font-medium">
+                        &quot;High probability honey-pot / dev exit trap. Top 5 wallets share funding from Tornado Cash. Dev holds 18% disguised across sub-wallets.&quot;
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200 p-2.5 text-xs">
+                    <div className="flex items-center justify-between rounded-lg bg-slate-50 border border-slate-200 p-2 text-xs">
                       <div className="flex items-center gap-1.5">
                         <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-                        <span className="text-slate-800 font-semibold text-[11px]">Analysis completed in 1.4s</span>
+                        <span className="text-slate-800 font-semibold text-[10px]">Analysis completed in 1.4s</span>
                       </div>
-                      <span className="text-emerald-700 font-bold text-[11px]">SAFE TO SKIP</span>
+                      <span className="text-emerald-700 font-bold text-[10px]">SAFE TO SKIP</span>
                     </div>
                   </div>
 
@@ -355,10 +355,10 @@ export default function PinnedDemo() {
                 {/* Window Bottom Actions Bar */}
                 <div className="flex items-center justify-between border-t border-slate-100 pt-2.5 text-xs">
                   <div className="flex gap-1.5">
-                    <span className="flex items-center gap-1 rounded-full bg-cyan-50 border border-cyan-200 px-2.5 py-1 text-[10px] font-bold text-cyan-700 shadow-xs">
+                    <span className="flex items-center gap-1 rounded-full bg-cyan-50 border border-cyan-200 px-2.5 py-0.5 text-[10px] font-bold text-cyan-700 shadow-xs">
                       <Plus className="h-2.5 w-2.5" /> Watchlist
                     </span>
-                    <span className="flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-1 text-[10px] font-bold text-emerald-700 shadow-xs">
+                    <span className="flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-bold text-emerald-700 shadow-xs">
                       <Sparkles className="h-2.5 w-2.5" /> AI Report
                     </span>
                   </div>
@@ -374,7 +374,7 @@ export default function PinnedDemo() {
             <div className="relative lg:col-span-5 flex gap-6 items-start">
               
               {/* Vertical Progress Rail */}
-              <div className="relative flex flex-col items-center self-stretch py-2 min-h-[260px]">
+              <div className="relative flex flex-col items-center self-stretch py-2 min-h-[220px]">
                 <div className="absolute top-0 bottom-0 w-0.5 bg-slate-200" />
                 <div className="demo-progress-fill absolute top-0 w-0.5 origin-top bg-gradient-to-b from-cyan-500 via-amber-500 to-emerald-500 h-full" />
                 
@@ -391,7 +391,7 @@ export default function PinnedDemo() {
               </div>
 
               {/* Step Descriptions Container */}
-              <div className="relative min-h-[260px] flex-1">
+              <div className="relative min-h-[220px] flex-1">
                 {SCENES.map((s) => (
                   <div key={s.step} className="demo-step-content absolute inset-0">
                     <div className="mb-3 flex items-center gap-3">
