@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import {
   Shield,
   Copy,
@@ -209,13 +209,30 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  // Parallax Scroll Tracking
+  const heroSectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroSectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Staggered 3D Parallax layers
+  const cardLeftY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const cardCenterY = useTransform(scrollYProgress, [0, 1], [0, -95]);
+  const cardRightY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const horizonY = useTransform(scrollYProgress, [0, 1], [0, 65]);
+  const aurorasY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, 35]);
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-28 pb-16">
-      {/* Background Starfield Grid & Auroras */}
+    <section ref={heroSectionRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-28 pb-16">
+      {/* Background Starfield Grid & Parallax Auroras */}
       <div className="bg-grid absolute inset-0 opacity-80 z-0" />
-      <div className="aurora h-[480px] w-[480px] bg-amber-500/15 top-[-100px] left-[15%] z-0" />
-      <div className="aurora h-[420px] w-[420px] bg-sky-500/15 top-[10%] right-[10%] z-0" style={{ animationDelay: "-6s" }} />
-      <div className="aurora h-[360px] w-[360px] bg-emerald-500/10 bottom-[20%] left-[30%] z-0" style={{ animationDelay: "-12s" }} />
+      <motion.div style={{ y: aurorasY }} className="pointer-events-none absolute inset-0 z-0">
+        <div className="aurora h-[480px] w-[480px] bg-amber-500/15 top-[-100px] left-[15%]" />
+        <div className="aurora h-[420px] w-[420px] bg-sky-500/15 top-[10%] right-[10%]" style={{ animationDelay: "-6s" }} />
+        <div className="aurora h-[360px] w-[360px] bg-emerald-500/10 bottom-[20%] left-[30%]" style={{ animationDelay: "-12s" }} />
+      </motion.div>
 
       {/* Main Container */}
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6 text-center">
@@ -354,10 +371,10 @@ export default function Hero() {
           </button>
         </motion.div>
 
-        {/* 3 Floating Bento Cards Deck (Rising from Horizon Curve with 3D Tilt) */}
+        {/* 3 Floating Bento Cards Deck (Rising from Horizon Curve with 3D Staggered Parallax) */}
         <div className="relative z-20 mt-14 w-full max-w-5xl">
           {/* Single Pure Glowing Letter-n Dome Wave (Radiating from the Horizon Dome Rim) */}
-          <div className="hero-single-n-wave pointer-events-none z-[1]">
+          <motion.div style={{ y: horizonY }} className="hero-single-n-wave pointer-events-none z-[1]">
             <svg viewBox="0 0 1000 250" className="w-full h-full overflow-visible" fill="none">
               <path
                 d="M 15,240 A 520,225 0 0,1 985,240"
@@ -378,16 +395,17 @@ export default function Hero() {
                 </linearGradient>
               </defs>
             </svg>
-          </div>
+          </motion.div>
 
           {/* Glowing Horizon Arc Behind the Cards */}
-          <div className="horizon-glow bottom-[-80px] z-[2]" />
+          <motion.div style={{ y: horizonY }} className="horizon-glow bottom-[-80px] z-[2]" />
 
-          {/* Cards Flex/Grid */}
+          {/* Cards Flex/Grid with Staggered Parallax Depths */}
           <div className="relative z-20 grid items-end gap-6 md:grid-cols-3">
             
             {/* Left Card: Deployer Track Record */}
             <motion.div
+              style={{ y: cardLeftY }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -429,8 +447,9 @@ export default function Hero() {
               </TiltCard>
             </motion.div>
 
-            {/* Center Card: Main Live Token Score Dial */}
+            {/* Center Card: Main Live Token Score Dial (Deepest Protrusion Parallax) */}
             <motion.div
+              style={{ y: cardCenterY }}
               initial={{ opacity: 0, y: 70 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -545,6 +564,7 @@ export default function Hero() {
 
             {/* Right Card: Real-Time Trade Stream */}
             <motion.div
+              style={{ y: cardRightY }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}

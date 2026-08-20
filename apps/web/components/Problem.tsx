@@ -1,11 +1,21 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ShieldAlert, ExternalLink, ArrowDownRight } from "lucide-react";
 
 export default function Problem() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const leftCardY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const rightCardY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+
   return (
-    <section className="relative py-28" id="problem">
+    <section ref={sectionRef} className="relative py-28 overflow-hidden" id="problem">
       <div className="mx-auto max-w-6xl px-6">
         <p className="mb-3 font-mono text-xs uppercase tracking-widest text-amber-700 font-bold">
           — 01 / THE PROBLEM
@@ -29,11 +39,12 @@ export default function Problem() {
 
         <div className="mt-14 grid items-center gap-8 lg:grid-cols-2">
           <motion.div
+            style={{ y: leftCardY }}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.55 }}
-            className="glass max-w-md rounded-3xl p-6 border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.04)]"
+            className="glass max-w-md rounded-3xl p-6 border border-slate-200/90 shadow-[0_10px_35px_rgba(0,0,0,0.04)] bg-white/80"
           >
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 font-bold text-white shadow-xs">
@@ -57,6 +68,7 @@ export default function Problem() {
           </motion.div>
 
           <motion.div
+            style={{ y: rightCardY }}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
