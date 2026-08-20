@@ -10,14 +10,18 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 
-    // Standard Lenis + GSAP ScrollTrigger integration — one scroll driver,
-    // otherwise both fight over the wheel and the pin stutters.
+    // Unified scroll driver with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
-    const tick = (time: number) => lenis.raf(time * 1000);
+
+    const tick = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
